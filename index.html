@@ -1,20 +1,44 @@
 <html>
 
     <head>
+        <title>Super awesome shopping cart</title>
         <link href='styles.css' rel='stylesheet'>
     </head>
 
     <body>
 
-        <ul id='products'>
-            <li>Apple</li>
-            <li>Banana</li>
-            <li>Orange</li>
-            <li>Plum</li>
-        </ul>
+        <div>
 
-        <ul id='cart'>
-        </ul>
+            <p>
+                Please click the products you want
+            </p>
+
+            <ul id='products'>
+                <li data-price='1.25'>Apple - $1.25</li>
+                <li data-price='1.45'>Banana - $1.45</li>
+                <li data-price='1.95'>Orange - $1.95</li>
+                <li data-price='2.99'>Plum - $2.99</li>
+            </ul>
+
+        </div>
+
+        <div>
+
+            <p>
+                Your shopping cart
+            </p>
+
+            <ul id='cart'>
+            </ul>
+
+            <div class='prices'>
+                Sub total: <span id='subtotal'>$0.00</span>
+                <br />
+                Tax (7%): <span id='tax'>$0.00</span>
+                <br />
+                Total: <span id='total'>$0.00<span>
+            </div>
+        </div>
 
         <script src='https://code.jquery.com/jquery-2.1.4.min.js' type='text/javascript'></script>
         <script src='scripts.js' type='text/javascript'></script>

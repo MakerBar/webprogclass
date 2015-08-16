@@ -1,4 +1,19 @@
+div {
+    border: black solid 2px;
+    margin: 30px;
+    padding: 30px;
+}
+
+div p {
+    font-weight: bold;
+    font-size: 20px
+}
+
 #products li:hover {
     cursor: pointer;
     text-decoration: underline;
+}
+
+.prices {
+    background-color: yellow;
 }
