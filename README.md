@@ -66,7 +66,7 @@ A simple shopping cart example to teach HTML, JS, and CSS
 1. Add a new file and call it "styles.css"
 2. Paste the following line in index.html in between ```<head>``` and ```</head>```
 ```
-<link href='style.css' rel='stylesheet'>
+<link href='styles.css' rel='stylesheet'>
 ```
 3. Paste the following code into styles.css
 ```
