@@ -19,20 +19,43 @@ A simple shopping cart example to teach HTML, JS, and CSS
 <html>
 
     <head>
-
+        <title>Super awesome shopping cart</title>
     </head>
 
     <body>
 
-        <ul id='products'>
-            <li>Apple</li>
-            <li>Banana</li>
-            <li>Orange</li>
-            <li>Plum</li>
-        </ul>
+        <div>
 
-        <ul id='cart'>
-        </ul>
+            <p>
+                Please click the products you want
+            </p>
+
+            <ul id='products'>
+                <li data-price='1.25'>Apple - $1.25</li>
+                <li data-price='1.45'>Banana - $1.45</li>
+                <li data-price='1.95'>Orange - $1.95</li>
+                <li data-price='2.99'>Plum - $2.99</li>
+            </ul>
+
+        </div>
+
+        <div>
+
+            <p>
+                Your shopping cart
+            </p>
+
+            <ul id='cart'>
+            </ul>
+
+            <div class='prices'>
+                Sub total: <span id='subtotal'>$0.00</span>
+                <br />
+                Tax (7%): <span id='tax'>$0.00</span>
+                <br />
+                Total: <span id='total'>$0.00<span>
+            </div>
+        </div>
 
     </body>
 
@@ -41,21 +64,36 @@ A simple shopping cart example to teach HTML, JS, and CSS
 
 #### Writing the CSS
 1. Add a new file and call it "styles.css"
-2. Paste the following line in index.html in between <head> and </head>
+2. Paste the following line in index.html in between ```<head>``` and ```</head>```
 ```
 <link href='style.css' rel='stylesheet'>
 ```
 3. Paste the following code into styles.css
 ```
+div {
+    border: black solid 2px;
+    margin: 30px;
+    padding: 30px;
+}
+
+div p {
+    font-weight: bold;
+    font-size: 20px
+}
+
 #products li:hover {
     cursor: pointer;
     text-decoration: underline;
+}
+
+.prices {
+    background-color: yellow;
 }
 ```
 
 #### Writing the JS
 1. Add a new file and call it "scripts.js"
-2. Paste the following lines in index.html right before </body>
+2. Paste the following lines in index.html right before ```</body>```
 ```
 <script src='https://code.jquery.com/jquery-2.1.4.min.js' type='text/javascript'></script>
 <script src='scripts.js' type='text/javascript'></script>
@@ -63,8 +101,28 @@ A simple shopping cart example to teach HTML, JS, and CSS
 3. Paste the following code into scripts.js
 ```
 $(function() {
-   $('#products li').click(function(e) {
-       $('#cart').append(e.target);
-   }) 
+    var subtotal = 0.0;
+
+    function updateTotal(price) {
+        subtotal += price;
+
+        var tax = subtotal * .07;
+        var total = subtotal + tax;
+
+        //display the updated figures
+        $('#subtotal').text('$' + (Math.round(subtotal * 100) / 100));
+        $('#tax').text('$' + (Math.round(tax * 100) / 100));
+        $('#total').text('$' + (Math.round(total * 100) / 100));
+    }
+
+    $('#products li').click(function(event) {
+
+       //move the product into the shopping cart
+       $('#cart').append(event.target);
+
+        var price = parseFloat($(event.target).data('price'));
+
+        updateTotal(price);
+    });
 });
 ```
