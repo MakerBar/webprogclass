@@ -21,5 +21,7 @@ $(function() {
         var price = parseFloat($(event.target).data('price'));
 
         updateTotal(price);
+
+        $(event.target).unbind();
     });
 });
